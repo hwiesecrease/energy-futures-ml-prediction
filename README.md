@@ -31,11 +31,12 @@ loss with patience 10.
 - Test MSE: 0.00070
 - Test MAE: 0.0201
 
-**The model did not learn directional signal.** Predictions collapse
-to a narrow band of small positive values (+0.002 to +0.007) while
-actual next-day returns range from -2.4% to +3.4%. Mean absolute
-error is roughly the size of a typical daily move, so the model is
-effectively predicting the average return every day.
+**The model did not learn directional signal.** Nearly every prediction
+falls between -2% and +1%, clustered tightly around zero, while actual
+next-day returns span roughly -8% to +7%. The predicted-vs-actual scatter
+shows a flat horizontal cloud against the 1:1 line — the model is
+effectively predicting the average return every day, and mean absolute
+error (2.0%) is about the size of a typical daily move.
 
 ## What I'd change
 - **More history.** 136 training windows is far too few for an LSTM
@@ -51,3 +52,5 @@ effectively predicting the average return every day.
 Open `crude_oil_lstm_pipeline.ipynb` in Jupyter.
 Requires: `yfinance`, `pandas`, `numpy`, `tensorflow`, `scikit-learn`,
 `matplotlib`.
+
+
